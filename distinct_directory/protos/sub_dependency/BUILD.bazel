@@ -1,0 +1,17 @@
+load("@rules_proto_grpc//python:defs.bzl", "python_proto_library")
+
+proto_library(
+    name = "sub_dependency_proto",
+    srcs = [
+        "sub_dependency_proto.proto",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+python_proto_library(
+    name = "sub_dependency_proto_python",
+    protos = [
+        ":sub_dependency_proto",
+    ],
+    visibility = ["//visibility:public"],
+)

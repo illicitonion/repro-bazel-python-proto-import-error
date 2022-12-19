@@ -1,0 +1,4 @@
+build --incompatible_use_python_toolchains
+
+# __init__.py files are no longer automatically created in the runfiles of Python targets
+build --incompatible_default_to_explicit_init_py

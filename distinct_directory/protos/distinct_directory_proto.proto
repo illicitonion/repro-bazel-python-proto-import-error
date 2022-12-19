@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package distinct_directory.protos;
+
+import "distinct_directory/protos/sub_dependency/sub_dependency_proto.proto";
+
+message SomeMessage {
+    distinct_directory.protos.sub_dependency.SomeMessage some_msg = 1;
+}

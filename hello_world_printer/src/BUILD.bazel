@@ -1,0 +1,40 @@
+load("@rules_python//python:defs.bzl", "py_binary", "py_library", "py_test")
+load("@pip//:requirements.bzl", "requirement")
+load("//hello_world_printer/src:defs.bzl", "my_custom_rule")
+
+exports_files([
+    "requirements-lock.txt",
+])
+
+py_binary(
+    name = "hello_world",
+    srcs = ["hello_world.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//hello_world_printer/protos:same_directory_proto_python",
+    ],
+)
+
+my_custom_rule(
+    name = "hello_world_via_custom_rule",
+    visibility = ["//visibility:public"],
+)
+
+py_library(
+    name = "hello_world_library",
+    srcs = ["hello_world.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//hello_world_printer/protos:same_directory_proto_python",
+    ],
+)
+
+py_test(
+    name = "hello_world_test",
+    size = "small",
+    srcs = ["hello_world_test.py"],
+    deps = [
+        ":hello_world_library",
+        requirement("pytest"),
+    ],
+)

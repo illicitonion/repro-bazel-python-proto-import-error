@@ -1,0 +1,15 @@
+load("@rules_proto_grpc//python:defs.bzl", "python_proto_library")
+
+proto_library(
+    name = "same_directory_proto",
+    srcs = ["same_directory_proto.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["//distinct_directory/protos:distinct_directory_proto"],
+)
+
+python_proto_library(
+    name = "same_directory_proto_python",
+    protos = [":same_directory_proto"],
+    visibility = ["//visibility:public"],
+    deps = ["//distinct_directory/protos:distinct_directory_proto_python"],
+)

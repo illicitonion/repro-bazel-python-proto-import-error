@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package distinct_directory.protos.sub_dependency;
+
+message SomeMessage {
+    string some_string = 1;
+}

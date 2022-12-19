@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package hello_world_printer.protos;
+
+import "distinct_directory/protos/distinct_directory_proto.proto";
+
+message SomeMessageUsingImport {
+    distinct_directory.protos.SomeMessage some_imported_message = 1;
+    string some_string = 2;
+}
